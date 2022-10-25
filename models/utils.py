@@ -22,6 +22,7 @@ class MedicalInsurance():
         with open(config.JSON_FILE_PATH, "r") as f:
             self.json_data = json.load(f)
 
+
     def get_predicted_price(self):
 
         self.load_model()  # Calling load_model method to get model and json_data
@@ -37,10 +38,12 @@ class MedicalInsurance():
         array[4] = self.json_data['smoker'][self.smoker]
         array[region_index] = 1
 
-        print("Test Array -->\n",array)
+        
         predicted_charges = self.model.predict([array])[0]
+        print(array)
         print("predicted_charges",predicted_charges)
         return np.around(predicted_charges, 2)
+        
 
 
 if __name__ == "__main__":

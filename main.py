@@ -16,7 +16,7 @@ def hello_flask():
 def get_insurance_charges():
 
     if request.method == "GET":
-        print("We are using GET Method")
+        print("GET Method")
     
         age = int(request.args.get("age"))
         sex = request.args.get("sex")
@@ -25,7 +25,7 @@ def get_insurance_charges():
         smoker = request.args.get("smoker")
         region = request.args.get("region")
 
-        print("age, sex, bmi, children, smoker, region\n",age, sex, bmi, children, smoker, region)
+        print(age, sex, bmi, children, smoker, region)
 
         med_ins = MedicalInsurance(age, sex, bmi, children, smoker, region)
         charges = med_ins.get_predicted_price()
@@ -51,7 +51,7 @@ def get_insurance_charges():
         print("age, sex, bmi, children, smoker, region\n",age, sex, bmi, children, smoker, region)
 
         return render_template("index.html", prediction = charges)
-        # return jsonify({"Result" : f"Predicted Charges for Medical Insurance is {charges}/- Rs. Only"})
+        # return jsonify({"Result" : f"Predicted Charges for Medical Insurance is {charges}/- Rs. Only\n"})
 
 
 if __name__ == "__main__":
