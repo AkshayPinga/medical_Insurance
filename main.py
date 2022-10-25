@@ -17,16 +17,7 @@ def get_insurance_charges():
 
     if request.method == "GET":
         print("We are using GET Method")
-       
-        # data = request.form
-        # print("Data ::",data)
-        # age = eval(data['age'])
-        # sex = data['sex']
-        # bmi = eval(data['bmi'])
-        # children = eval(data['children'])
-        # smoker = data['smoker']
-        # region = data['region']
-
+    
         age = int(request.args.get("age"))
         sex = request.args.get("sex")
         bmi = float(request.args.get("bmi"))
@@ -56,6 +47,8 @@ def get_insurance_charges():
 
         med_ins = MedicalInsurance(age, sex, bmi, children, smoker, region)
         charges = med_ins.get_predicted_price()
+
+        print("age, sex, bmi, children, smoker, region\n",age, sex, bmi, children, smoker, region)
 
         return render_template("index.html", prediction = charges)
         # return jsonify({"Result" : f"Predicted Charges for Medical Insurance is {charges}/- Rs. Only"})
